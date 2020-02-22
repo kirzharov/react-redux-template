@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { ListItem } from "./ListItem";
 import { ControlList } from "./ControlList";
 import { dropElement } from "../../reduxSetup";
+import { listSelector } from "./selectors";
 
 type ListPropsT = {
   text: string;
@@ -23,7 +24,10 @@ export const List = (props: ListPropsT) => {
 
   const dispatch = useDispatch();
 
-  const content = useSelector<RootStore, ListElement[]>(state => state.list);
+  const { list, count, moreThanThree } = useSelector<
+    RootStore,
+    { list: ListElement[]; count: number; moreThanThree: number }
+  >(listSelector);
 
   const remove = (id: string) => () => {
     dispatch(dropElement(id));
@@ -34,10 +38,11 @@ export const List = (props: ListPropsT) => {
   return (
     <>
       <b>{text}</b>
+      <b>{count}</b>
+      <b>{moreThanThree}</b>
       <ControlList dispatch={dispatch} />
       <ol>
-        {content &&
-          content.map(el => <RenderListElement {...el} key={el.id} />)}
+        {list && list.map(el => <RenderListElement {...el} key={el.id} />)}
       </ol>
     </>
   );

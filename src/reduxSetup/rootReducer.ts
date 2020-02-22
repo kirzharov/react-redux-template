@@ -1,21 +1,23 @@
+import { Map as IMap } from "immutable";
+
 import { ELEMENT_ADD, ELEMENT_DROP, RESET_ALL } from "./actionTypes";
 
-const initialState: RootStore = { list: [] };
+const initialStateValue: { [k: string]: ListElement[] } = { list: [] };
+
+const initialState = IMap(initialStateValue);
 
 const actionHanlder = new Map<string, RootReducer>([
   [
     ELEMENT_ADD,
-    (state, action: Action<ListElement>) => {
-      const { list } = state;
-      return { list: [...list, action.payload] };
-    }
+    (state, { payload }: Action<ListElement>) =>
+      state.update("list", (v: ListElement[]) => [...v, payload])
   ],
   [
     ELEMENT_DROP,
-    (state: RootStore, action: Action<string>) => {
-      const { list } = state;
-      return { list: list.filter(e => e.id !== action.payload) };
-    }
+    (state: RootStore, { payload }: Action<string>) =>
+      state.update("list", (l: ListElement[]) =>
+        l.filter(e => e.id !== payload)
+      )
   ],
   [RESET_ALL, () => initialState],
   ["DEFAULT_PLUG", (state: RootStore) => state]

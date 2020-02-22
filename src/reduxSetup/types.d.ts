@@ -1,6 +1,8 @@
 type ListElement = { name: string; id: string; comment: string };
 
-type RootStore = { list: ListElement[] };
+type IMap<K, V> = import("immutable").Map<K, V>;
+
+type RootStore = IMap<string, ListElement[]>;
 
 type Action<T> = { type: string; payload: T };
 

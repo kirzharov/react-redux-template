@@ -10,11 +10,14 @@
     "@types/node": "^13.7.4",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "immutable": "^4.0.0-rc.12",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^7.2.0",
     "react-scripts": "3.4.0",
     "redux": "^4.0.5",
+    "redux-immutable": "^4.0.0",
+    "reselect": "^4.0.0",
     "typescript": "~3.8.2",
     "uuid": "^3.4.0"
   },
@@ -40,8 +43,11 @@
     ]
   },
   "devDependencies": {
+    "@types/immutable": "^3.8.7",
     "@types/react-redux": "^7.1.7",
     "@types/redux": "^3.6.0",
+    "@types/redux-immutable": "^4.0.1",
+    "@types/reselect": "^2.2.0",
     "@types/uuid": "^3.4.7"
   }
 }
