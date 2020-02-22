@@ -10,6 +10,7 @@ type ActionsT =
   | typeof ELEMENT_ADD
   | typeof ELEMENT_DROP
   | typeof RESET_ALL
+  | typeof FETCH_DATA
   | "DEFAULT_PLUG";
 
 type RootReducer<T = ActionsT> = (

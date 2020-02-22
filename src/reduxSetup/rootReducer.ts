@@ -20,6 +20,7 @@ const actionHanlder = new Map<string, RootReducer>([
       )
   ],
   [RESET_ALL, () => initialState],
+
   ["DEFAULT_PLUG", (state: RootStore) => state]
 ]);
 

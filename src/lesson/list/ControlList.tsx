@@ -1,7 +1,7 @@
 import React, { useState, Dispatch, ChangeEvent } from "react";
 import { v4 } from "uuid";
 
-import { addElement, resetStore } from "../../reduxSetup";
+import { addElement, resetStore, callFetch } from "../../reduxSetup";
 
 type ControlListProps = { dispatch: Dispatch<ActionsT> };
 
@@ -28,6 +28,9 @@ export const ControlList = ({ dispatch }: ControlListProps) => {
       dispatch(addElement(generateElement(name, myComment)));
     }
   };
+  const fetchElement = () => {
+    dispatch(callFetch({ name, comment }));
+  };
   const clearAll = () => dispatch(resetStore());
 
   return (
@@ -39,6 +42,9 @@ export const ControlList = ({ dispatch }: ControlListProps) => {
       </li>
       <li>
         <button onClick={clearAll}>Reset Store</button>
+      </li>
+      <li>
+        <button onClick={fetchElement}>Fetch element</button>
       </li>
     </ul>
   );
