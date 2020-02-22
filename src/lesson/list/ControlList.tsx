@@ -1,5 +1,6 @@
 import React, { useState, Dispatch, ChangeEvent } from "react";
 import { v4 } from "uuid";
+import { useHistory } from "react-router-dom";
 
 import { addElement, resetStore, callFetch } from "../../reduxSetup";
 
@@ -33,6 +34,12 @@ export const ControlList = ({ dispatch }: ControlListProps) => {
   };
   const clearAll = () => dispatch(resetStore());
 
+  const history = useHistory();
+
+  const jumpToRandomFC = () => {
+    history.push("/fc/random-fc");
+  };
+
   return (
     <ul>
       <li>
@@ -45,6 +52,9 @@ export const ControlList = ({ dispatch }: ControlListProps) => {
       </li>
       <li>
         <button onClick={fetchElement}>Fetch element</button>
+      </li>
+      <li>
+        <button onClick={jumpToRandomFC}>Jump to random FC</button>
       </li>
     </ul>
   );
