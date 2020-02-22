@@ -5,6 +5,8 @@ import { ListItem } from "./ListItem";
 import { ControlList } from "./ControlList";
 import { dropElement } from "../../reduxSetup";
 import { listSelector } from "./selectors";
+import { MyBlock } from "./MyBlock";
+import { MyBoldB } from "./styled";
 
 type ListPropsT = {
   text: string;
@@ -37,9 +39,9 @@ export const List = (props: ListPropsT) => {
 
   return (
     <>
-      <b>{text}</b>
+      <MyBlock text={text} />
       <b>{count}</b>
-      <b>{moreThanThree}</b>
+      <MyBoldB>{moreThanThree}</MyBoldB>
       <ControlList dispatch={dispatch} />
       <ol>
         {list && list.map(el => <RenderListElement {...el} key={el.id} />)}
