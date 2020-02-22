@@ -1,2 +1,2 @@
 export { rootReducer } from "./rootReducer";
-export { addElement, dropElement, resetStore } from "./actions";
+export { addElement, dropElement, callFetch, resetStore } from "./actions";
