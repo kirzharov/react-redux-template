@@ -4,6 +4,7 @@ import React, {
   ChangeEvent,
   useEffect
 } from "react";
+import { useParams } from "react-router-dom";
 
 type FunctionalComponentPropsT = PropsWithChildren<{ text: string }>;
 
@@ -15,6 +16,7 @@ const extractPkgName = (e: PackageT) => {
 
 export const FunctionalComponent = (props: FunctionalComponentPropsT) => {
   const { text } = props;
+  const { id } = useParams();
 
   const [textValue, setText] = useState<string>("");
   const [pkgToSearch, setPgk] = useState<string>("");
@@ -46,7 +48,7 @@ export const FunctionalComponent = (props: FunctionalComponentPropsT) => {
 
   return (
     <div>
-      {text}
+      {text} with route id = {id}
       <br />
       <input value={textValue} onChange={handleChange} />
       <button onClick={applySearch}>Search</button>
