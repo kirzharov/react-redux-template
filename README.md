@@ -10,3 +10,5 @@ Step 3: [Redux-Saga](https://github.com/kirzharov/react-redux-template/tree/feat
 Step 4: [React Router](https://github.com/kirzharov/react-redux-template/tree/feature/react-router)
 
 Step 5: [Styled Components](https://github.com/kirzharov/react-redux-template/tree/feature/styled-components)
+
+Step 5: [Styled Components](https://github.com/kirzharov/react-redux-template/tree/feature/layout)
