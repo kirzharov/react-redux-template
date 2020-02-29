@@ -28,7 +28,10 @@ const colorExtractor = (color: "red" | "green") => ({
 }: StyledPropsWithTheme) => theme[color];
 
 export const MyDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin: 16px 0;
+  width: 160px;
   background-color: ${colorExtractor("red")};
   &:hover {
     background-color: ${colorExtractor("green")};

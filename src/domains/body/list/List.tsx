@@ -40,8 +40,9 @@ export const List = (props: ListPropsT) => {
   return (
     <>
       <MyBlock text={text} />
-      <b>{count}</b>
-      <MyBoldB>{moreThanThree}</MyBoldB>
+      count: <b>{count}</b>
+      <br />
+      more than three: <MyBoldB>{moreThanThree}</MyBoldB>
       <ControlList dispatch={dispatch} />
       <ol>
         {list && list.map(el => <RenderListElement {...el} key={el.id} />)}
