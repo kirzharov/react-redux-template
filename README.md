@@ -11,4 +11,4 @@ Step 4: [React Router](https://github.com/kirzharov/react-redux-template/tree/fe
 
 Step 5: [Styled Components](https://github.com/kirzharov/react-redux-template/tree/feature/styled-components)
 
-Step 5: [Styled Components](https://github.com/kirzharov/react-redux-template/tree/feature/layout)
+Step 6: [Layout](https://github.com/kirzharov/react-redux-template/tree/feature/layout)
