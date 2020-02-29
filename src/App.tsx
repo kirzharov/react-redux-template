@@ -13,7 +13,7 @@ import {
   FunctionalComponent,
   Navigation,
   NotFound
-} from "./lesson";
+} from "./domains/body";
 
 type PrivateRoutePropsT = {
   path: string;

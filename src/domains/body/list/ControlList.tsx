@@ -2,7 +2,7 @@ import React, { useState, Dispatch, ChangeEvent } from "react";
 import { v4 } from "uuid";
 import { useHistory } from "react-router-dom";
 
-import { addElement, resetStore, callFetch } from "../../reduxSetup";
+import { addElement, resetStore, callFetch } from "../../../reduxSetup";
 
 type ControlListProps = { dispatch: Dispatch<ActionsT> };
 

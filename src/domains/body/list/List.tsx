@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { ListItem } from "./ListItem";
 import { ControlList } from "./ControlList";
-import { dropElement } from "../../reduxSetup";
+import { dropElement } from "../../../reduxSetup";
 import { listSelector } from "./selectors";
 import { MyBlock } from "./MyBlock";
 import { MyBoldB } from "./styled";
