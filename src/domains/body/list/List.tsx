@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 import { ListItem } from "./ListItem";
 import { ControlList } from "./ControlList";
-import { dropElement } from "../../reduxSetup";
+import { dropElement } from "../../../reduxSetup";
 import { listSelector } from "./selectors";
 import { MyBlock } from "./MyBlock";
 import { MyBoldB } from "./styled";
@@ -40,8 +40,9 @@ export const List = (props: ListPropsT) => {
   return (
     <>
       <MyBlock text={text} />
-      <b>{count}</b>
-      <MyBoldB>{moreThanThree}</MyBoldB>
+      count: <b>{count}</b>
+      <br />
+      more than three: <MyBoldB>{moreThanThree}</MyBoldB>
       <ControlList dispatch={dispatch} />
       <ol>
         {list && list.map(el => <RenderListElement {...el} key={el.id} />)}
