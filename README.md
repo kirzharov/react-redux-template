@@ -12,3 +12,5 @@ Step 4: [React Router](https://github.com/kirzharov/react-redux-template/tree/fe
 Step 5: [Styled Components](https://github.com/kirzharov/react-redux-template/tree/feature/styled-components)
 
 Step 6: [Layout](https://github.com/kirzharov/react-redux-template/tree/feature/layout)
+
+Example without Immutable.js: [Books](https://github.com/kirzharov/react-redux-template/tree/example/books)
