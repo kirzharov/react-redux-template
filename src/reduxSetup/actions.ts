@@ -1,23 +1,16 @@
-import {
-  ELEMENT_ADD,
-  ELEMENT_DROP,
-  RESET_ALL,
-  FETCH_DATA
-} from "./actionTypes";
+import { ADD_BOOK, ADD_ALL_BOOKS, FETCH_ALL_BOOKS } from "./actionTypes";
 
-export const addElement = (newElement: ListElement) => ({
-  type: ELEMENT_ADD,
-  payload: newElement
-});
-
-export const dropElement = (idOfElementToRemove: string) => ({
-  type: ELEMENT_DROP,
-  payload: idOfElementToRemove
-});
-
-export const callFetch = (payload: { name: string; comment: string }) => ({
-  type: FETCH_DATA,
+export const addBook = (payload: BookT) => ({
+  type: ADD_BOOK,
   payload
 });
 
-export const resetStore = () => ({ type: RESET_ALL });
+export const addAllBooks = (payload: BookT[]) => ({
+  type: ADD_ALL_BOOKS,
+  payload
+});
+
+export const fetchAllBooks = (retryCount = 0) => ({
+  type: FETCH_ALL_BOOKS,
+  payload: { retryCount }
+});

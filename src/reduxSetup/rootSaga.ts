@@ -1,35 +1,38 @@
-import { all, fork, put, takeLatest, call } from "redux-saga/effects";
-import { v4 } from "uuid";
+import { put, call, takeLatest, delay } from "redux-saga/effects";
 
-import { FETCH_DATA, ELEMENT_ADD } from "./actionTypes";
+import { FETCH_ALL_BOOKS } from "./actionTypes";
+import { addAllBooks } from "./actions";
 
-type CreateRecordT = {
-  name: string;
-  comment: string;
-  count?: number;
-};
+import { bookDb } from "../db";
 
-const createNewRecord = ({ name, comment }: CreateRecordT) => ({
-  id: v4(),
-  name,
-  comment
-});
+const fakeFetch = () => bookDb;
 
-function* fetchExternalData({ payload }: Action<CreateRecordT>) {
-  if (!payload.count) {
-    const data = yield call(createNewRecord, payload);
+const second_and_a_half = 1500;
+
+function* fetchAllBooks({ type, payload }: any) {
+  const { retryCount } = payload;
+
+  try {
+    const payload = yield call(fakeFetch);
+
+    yield put(addAllBooks(payload));
+  } catch (e) {
+    yield delay(second_and_a_half);
 
     yield put({
-      type: ELEMENT_ADD,
-      payload: data
+      type: "ERROR_TYPE",
+      payload: { loc: "rootSaga/fetchAllBooks", err: e }
     });
+
+    if (retryCount < 5) {
+      yield put({
+        type: FETCH_ALL_BOOKS,
+        payload: { retryCount: retryCount + 1 }
+      });
+    }
   }
 }
 
-function* appFetchSaga() {
-  yield takeLatest(FETCH_DATA, fetchExternalData);
-}
-
 export function* rootSaga() {
-  yield all([fork(appFetchSaga)]);
+  yield takeLatest(FETCH_ALL_BOOKS, fetchAllBooks);
 }

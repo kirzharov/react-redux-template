@@ -1,48 +1,19 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import { useSelector } from "react-redux";
 
 import "./App.css";
 
 import { Default, SecondLayout } from "./domains/layouts";
 import { MenuList } from "./domains/menu";
-
-import {
-  List,
-  ClassComponent,
-  FunctionalComponent,
-  Navigation,
-  NotFound
-} from "./domains/body";
-
-type PrivateRoutePropsT = {
-  path: string;
-  predicate: (args: any) => boolean;
-  valueToBeChecked: any;
-  SuccessRoute: any;
-  FailureRoute: any;
-};
-
-const PrivateRoute = ({
-  path,
-  predicate,
-  valueToBeChecked,
-  SuccessRoute,
-  FailureRoute
-}: PrivateRoutePropsT) => {
-  return (
-    <Route path={path}>
-      {predicate(valueToBeChecked) ? <SuccessRoute /> : <FailureRoute />}
-    </Route>
-  );
-};
-
-const coolTheme = { red: "red", green: "green" };
+import { Button } from "./domains/body/Button";
+import { BooksList } from "./domains/body/BooksList";
 
 const App: React.FC = () => {
   const [layoutMode, setLayoutMode] = useState(false);
 
   const Layout = layoutMode ? Default : SecondLayout;
+
+  const bookList = useSelector<RootStore, BookT[]>(state => state.bookList);
 
   return (
     <div className="App">
@@ -53,29 +24,10 @@ const App: React.FC = () => {
         <button onClick={() => setLayoutMode(!layoutMode)}>
           switch layout
         </button>
-        <ThemeProvider theme={coolTheme}>
-          <Router>
-            <Navigation />
-            <Switch>
-              <Route path="/list">
-                <ClassComponent text="text prop" />
-                <List text="routered" />
-              </Route>
 
-              <PrivateRoute
-                path="/fc/:id"
-                predicate={arg => arg === "auth"}
-                valueToBeChecked={localStorage.getItem("isAuth")}
-                SuccessRoute={() => (
-                  <FunctionalComponent text="I am the functional component" />
-                )}
-                FailureRoute={() => <NotFound />}
-              />
+        <Button />
 
-              <Route path="*" children={<NotFound />} />
-            </Switch>
-          </Router>
-        </ThemeProvider>
+        {bookList && <BooksList books={bookList} />}
       </Layout>
     </div>
   );
