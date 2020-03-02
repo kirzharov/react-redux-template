@@ -1,5 +1,3 @@
-type NameAndPosition = import("./lesson/list/types").NameAndPosition;
-
 type BookT = {
   id: number;
   title: string;
